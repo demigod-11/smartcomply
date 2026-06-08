@@ -155,28 +155,6 @@ src/
 └── rust/tm_rules/    # PyO3 crate (exceeds_threshold)
 ```
 
-### Component diagram
-
-```mermaid
-flowchart TB
-    Client[HTTP / WebSocket clients]
-    API[Daphne API]
-    Worker[Django-Q Worker]
-    PG[(PostgreSQL)]
-    Redis[(Redis)]
-    Rust[tm_rules Rust]
-
-    Client -->|REST X-API-Key| API
-    Client -->|WS alerts:stream| API
-    API --> PG
-    API --> Redis
-    API -->|enqueue evaluate| Worker
-    Worker --> PG
-    Worker --> Redis
-    Worker --> Rust
-    Worker -->|group_send| API
-```
-
 ### Sequence: transaction ingest → alert → WebSocket
 
 ```mermaid
