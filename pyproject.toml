@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "smartcomply"
+version = "0.1.0"
+description = "Transaction Monitoring Service for SmartComply take-home assessment"
+authors = ["SmartComply"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = ">=5.0,<6.0"
+djangorestframework = ">=3.15,<4.0"
+django-filter = ">=24.0"
+django-environ = ">=0.11"
+django-q2 = ">=1.6"
+channels = ">=4.0"
+channels-redis = ">=4.2"
+redis = ">=5.0"
+psycopg = { version = ">=3.1", extras = ["binary"] }
+loguru = ">=0.7"
+drf-spectacular = ">=0.27"
+daphne = ">=4.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0"
+pytest-django = ">=4.8"
+pytest-asyncio = ">=0.23"
+maturin = ">=1.5"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+pythonpath = ["src"]
+python_files = ["tests.py", "test_*.py"]
+addopts = "-v --tb=short"
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+poetry.toml
+.env
+*.egg-info/
+dist/
+build/
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+*.whl
+rust/tm_rules/target/
+*.sqlite3
+*.rest
